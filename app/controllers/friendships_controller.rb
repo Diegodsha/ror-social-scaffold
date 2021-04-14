@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.new(friend_id: params[:user_id])
 
     if @friendship.save
-      redirect_to users_path, notice: 'You invited a friend!'
+      redirect_to users_path, notice: "You invited #{@friendship.friend.name}!"
     else
       redirect_to users_path, alert: 'You cannot invite this friend.'
     end
@@ -18,12 +18,9 @@ class FriendshipsController < ApplicationController
 
   def destroy
     friendship = Friendship.find(params[:id])
-    friend_name = friendship.user.name
+    friend = friendship.friend
+    current_user.reject_friend(friend)
 
-    if friendship.destroy
-      redirect_to user_path, notice: "You've rejected #{friend_name} :("
-    else
-      redirect_to user_path, notice: "#{friend_name} cannot be rejected"
-    end
+    redirect_to user_path, notice: "You've rejected #{friend.name} :("
   end
 end
