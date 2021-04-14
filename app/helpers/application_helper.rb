@@ -18,7 +18,6 @@ module ApplicationHelper
 
   def invite_or_invited_btn(user)
     (return if current_user == user || current_user.friend?(user))
-    
     if current_user.pending_friends.include?(user)
       'Invite pending'
     else
