@@ -9,7 +9,7 @@ RSpec.describe 'Sign in', type: :system do
     visit '/users/sign_in'
     sleep(5)
 
-    within("#new_user") do
+    within('#new_user') do
       fill_in 'Email', with: 'louis@hotmail.com'
       fill_in 'Password', with: 'konohavillage'
     end
