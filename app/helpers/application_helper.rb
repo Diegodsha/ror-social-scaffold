@@ -22,9 +22,17 @@ module ApplicationHelper
         if current_user.pending_friends.include?(user)
           'Invite pending'
         else
-          link_to(btn_label, user_friendships_path(user_id: user.id), method: :post)
+          link_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post, class: 'profile-link')
         end
       end
     end
   end
+
+  def accept_friendship(friendship)  
+
+    link_to('Accept friend',user_friendship_path(friendship_id: friendship.id, user_id: friendship.user.id), method: :put )
+    
+
+  end
+  
 end

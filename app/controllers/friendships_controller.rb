@@ -8,4 +8,14 @@ class FriendshipsController < ApplicationController
       redirect_to users_path, alert: 'You cannot invite this friend.'
     end
   end
+
+  def update
+    #@friendship = Friendship.find(params[:friendship_id])
+    friend = User.find(params[:user_id])
+    current_user.confirm_friend(friend)
+
+    redirect_to user_path, notice: "#{friend.name} is now your friend"
+    
+  end
+  
 end
