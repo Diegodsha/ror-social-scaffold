@@ -17,12 +17,12 @@ module ApplicationHelper
   end
 
   def invite_or_invited_btn(user)
-    if !current_user == user && !current_user.friend?(user)
-      if current_user.pending_friends.include?(user)
-        'Invite pending'
-      else
-        link_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post, class: 'profile-link')
-      end
+    (return if current_user == user || current_user.friend?(user))
+    
+    if current_user.pending_friends.include?(user)
+      'Invite pending'
+    else
+      link_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post, class: 'profile-link')
     end
   end
 
