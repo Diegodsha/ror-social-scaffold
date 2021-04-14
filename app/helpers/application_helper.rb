@@ -29,10 +29,10 @@ module ApplicationHelper
   end
 
   def accept_friendship(friendship)
-    link_to('Accept', user_friendship_path(user_id: friendship.user.id), method: :put, class: 'profile-link' )
+    link_to('Accept', user_friendship_path(user_id: friendship.user.id), method: :put, class: 'profile-link')
   end
 
   def reject_friendship(friendship)
-    link_to('Reject', user_friendship_path(user_id: friendship.user.id), method: :delete, class: 'profile-link' )
+    link_to('Reject', user_friendship_path(user_id: friendship.user.id), method: :delete, class: 'profile-link')
   end
 end
