@@ -24,7 +24,7 @@ module ApplicationHelper
     elsif current_user.pending_requests.include?(user)
       'Request pending'
     else
-      button_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post )
+      button_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post)
     end
   end
 
