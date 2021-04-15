@@ -21,7 +21,7 @@ module ApplicationHelper
     if current_user.pending_friends.include?(user)
       'Invite pending'
     elsif current_user.friend?(user) == false
-      link_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post, class: 'profile-link')
+      button_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post )
     else 
       ''
     end
