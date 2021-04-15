@@ -21,6 +21,6 @@ class FriendshipsController < ApplicationController
     friend = friendship.user
     current_user.reject_friend(friend)
 
-    redirect_to user_path, notice: "You've rejected #{friend.name} :("
+    redirect_to user_path(current_user), notice: "You've rejected #{friend.name} :("
   end
 end
