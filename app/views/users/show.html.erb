@@ -4,7 +4,7 @@
     <% @user.friend_requests.each do |friendship| %>
     <p>
       <%= friendship.user.name %>
-      <%= accept_friendship(friendship) %> | <%= reject_friendship(friendship) %>
+      <%= accept_friendship(friendship) %>  <%= reject_friendship(friendship) %>
     </p>
     <% end %>
   </div>

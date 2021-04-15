@@ -20,16 +20,26 @@ module ApplicationHelper
     (return if current_user == user || current_user.friend?(user))
     if current_user.pending_friends.include?(user)
       'Invite pending'
-    else
+    elsif current_user.friend?(user) == false
       link_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post, class: 'profile-link')
+    else 
+      ''
     end
   end
 
   def accept_friendship(friendship)
-    link_to('Accept', user_friendship_path(user_id: friendship.user.id), method: :put, class: 'profile-link')
+    if current_user != @user
+      ''
+    else
+      link_to('Accept', user_friendship_path(user_id: friendship.user.id), method: :put, class: 'profile-link')
+    end
   end
 
   def reject_friendship(friendship)
-    link_to('Reject', user_friendship_path(user_id: friendship.user.id), method: :delete, class: 'profile-link')
+    if current_user != @user
+      ''
+    else
+      link_to('Reject', user_friendship_path(user_id: friendship.user.id), method: :delete, class: 'profile-link')
+    end
   end
 end
