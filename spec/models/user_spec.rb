@@ -35,11 +35,10 @@ RSpec.describe User, type: :model do
     it 'user can reject friend requests' do
       friendship = user1.friendships.new(friend_id: user2.id)
       friendship.save
-      user2.reject_friend(user1)
-      friends = user1.friend?(user2)
 
-      expect(friends).to eq(false)
-      expect(user1.inverse_friendships.size).to eq(0)
+      user2.reject_friend(user1)
+
+      expect(user1.friend?(user2)).to be false
     end
   end
 end

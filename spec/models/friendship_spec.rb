@@ -3,12 +3,16 @@ require 'rails_helper'
 RSpec.describe Friendship, type: :model do
   let(:user1) { User.create(name: 'user1', email: 'user1@hotmail.com', password: 'password') }
   let(:user2) { User.create(name: 'user2', email: 'user2@hotmail.com', password: 'password') }
-  let(:new_friendship) { Friendship.create(user_id:user1.id, friend_id:user2.id, confirmed:nil) } 
-  let(:new_invalid_friendship) { Friendship.create(user_id:user1.id) } 
+  let(:new_friendship) { Friendship.create(user: user1, friend: user2) }
+  let(:new_invalid_friendship) { Friendship.create(user: user1) }
 
   describe "Friendships can be created" do
+    it "sets default value of false to confirmed" do
+      expect(new_friendship.confirmed).to be false
+    end
+
     it "checks if friendship is valid" do
-        expect(new_friendship).to  be_valid
+        expect(new_friendship).to be_valid
         expect(user1.friendships.size).to eq(1)
     end
     
@@ -29,10 +33,12 @@ RSpec.describe Friendship, type: :model do
 
     it "create 2 rows of friendships" do
         new_friendship.save
-        expect(Friendship.all.length).to be(1)
+        expect(Friendship.all.length).to be(2)
     end
-    
-  end
-  
 
+    it "verifies existence of inverse friendship" do
+      new_friendship.save
+      expect(Friendship.where(user: new_friendship.friend, friend: new_friendship.user)).not_to be_nil
+    end
+  end
 end
