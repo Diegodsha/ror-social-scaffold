@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'a friendship can be created' do
+  describe 'user can have friends' do
     it 'user can send friend requests' do
       friendship = user1.friendships.new(friend_id: user2.id)
       friendship.save
