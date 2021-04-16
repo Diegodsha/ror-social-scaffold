@@ -9,7 +9,7 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   def set_defaults
-    self.confirmed = false if self.confirmed.nil?
+    self.confirmed = false if confirmed.nil?
   end
 
   def create_inverse

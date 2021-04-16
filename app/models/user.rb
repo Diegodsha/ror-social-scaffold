@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   # Users who have requested to be friends
   def pending_requests
-    friend_requests.map { |friendship| friendship.user }.compact
+    friend_requests.map(&:user).compact
   end
 
   def confirm_friend(user)
