@@ -169,7 +169,7 @@ form {
 
   input[type="submit"] {
     padding: 8px;
-    width: 50%;
+    //width: 72%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -194,6 +194,35 @@ form {
   text-align: center;
   margin-bottom: 16px;
   text-transform: capitalize;
+}
+
+.users-section {
+  width: 100%;
+  margin: 10px;
+
+  .users-list li {
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    font-size: 1.2em;
+    display: flex;
+
+    span {
+      display: flex;
+      align-items: center;
+      width: 175px;
+      justify-content: start;
+
+      .button_to {
+        margin: 0;
+      }
+    }
+  }
+
+  .profile-link {
+    font-size: 0.8em;
+    margin: 0 5px 0 5px;
+    color: $primary-color-dark;
+  }
 }
 
 .timeline {
@@ -272,23 +301,6 @@ form {
         font-size: 0.6em;
       }
     }
-  }
-}
-
-.users-section {
-  width: 100%;
-  margin: 10px;
-
-  .users-list li {
-    margin-bottom: 16px;
-    text-transform: capitalize;
-    font-size: 1.2em;
-  }
-
-  .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
   }
 }
 
