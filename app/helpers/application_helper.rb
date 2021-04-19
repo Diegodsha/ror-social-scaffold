@@ -40,7 +40,7 @@ module ApplicationHelper
     link_to('Accept', user_friendship_path(friendship.user, friendship.id), method: :put, class: 'profile-link')
   end
 
-  def accept_friendship_with_user(user)
+  def reject_friendship_with_user(user)
     return if current_user_or_friend?(user)
     return unless current_user.pending_friendship?(user)
 
