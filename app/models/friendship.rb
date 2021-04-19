@@ -1,8 +1,7 @@
 class Friendship < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
 
-  after_create :create_inverse, if: :inverse_record_nil?
-  after_update :update_inverse
+  after_update :create_inverse, if: :inverse_record_nil?
   after_destroy :destroy_inverse
 
   belongs_to :user
@@ -14,14 +13,6 @@ class Friendship < ApplicationRecord
 
   def create_inverse
     Friendship.create(user: friend, friend: user, confirmed: confirmed)
-  end
-
-  def update_inverse
-    ir = inverse_record
-    return if ir.confirmed == confirmed
-
-    ir.confirmed = confirmed
-    ir.save
   end
 
   def destroy_inverse

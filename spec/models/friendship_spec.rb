@@ -31,13 +31,11 @@ RSpec.describe Friendship, type: :model do
       expect(user1.friends.size).to eq(0)
     end
 
-    it 'create 2 rows of friendships' do
+    it 'create inverse friendship once confirmed' do
       new_friendship.save
-      expect(Friendship.all.length).to be(2)
-    end
+      new_friendship.confirmed = true
+      new_friendship.save
 
-    it 'verifies existence of inverse friendship' do
-      new_friendship.save
       expect(Friendship.where(user: new_friendship.friend, friend: new_friendship.user)).not_to be_nil
     end
   end
