@@ -16,16 +16,36 @@ module ApplicationHelper
     end
   end
 
-  def invite_or_invited_btn(user)
-    (return if current_user == user || current_user.friend?(user))
+  def current_user_or_friend?(user)
+    current_user == user || current_user.friend?(user)
+  end
+
+  def invite_or_pending_btn(user)
+    return if current_user_or_friend?(user)
 
     if current_user.pending_friends.include?(user)
-      'Invite pending'
-    elsif current_user.pending_requests.include?(user)
-      'Request pending'
+      'Friendship pending'
     else
-      button_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post)
+      unless current_user.pending_friendship?(user)
+        button_to('Invite to friendship', user_friendships_path(user_id: user.id), method: :post)
+      end
     end
+  end
+
+  def accept_friendship_with_user(user)
+    return if current_user_or_friend?(user)
+    return unless current_user.pending_friendship?(user)
+
+    friendship = current_user.pending_friendship(user)
+    link_to('Accept', user_friendship_path(friendship.user, friendship.id), method: :put, class: 'profile-link')
+  end
+
+  def reject_friendship_with_user(user)
+    return if current_user_or_friend?(user)
+    return unless current_user.pending_friendship?(user)
+
+    friendship = current_user.pending_friendship(user)
+    link_to('Reject', user_friendship_path(friendship.user, friendship.id), method: :delete, class: 'profile-link')
   end
 
   def accept_friendship(friendship)
