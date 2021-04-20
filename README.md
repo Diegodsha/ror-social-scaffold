@@ -4,13 +4,12 @@
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v2.7.2
+- Ruby on Rails v6.0.3
 
 ## Live Demo
 
-TBA
-
+[Live-Demo](https://ancient-ocean-45635.herokuapp.com/)
 
 ## Getting Started
 
@@ -37,16 +36,6 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
 ### Usage
 
 Start server with:
@@ -60,34 +49,29 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rpsec
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
 
-TBA
+- Heroku
 
 ## Authors
 
-TBA
+### Diego Hernández
 
-## 🤝 Contributing
+- GitHub: [@Diegodsha](https://github.com/Diegodsha)
+- Twitter: [@diegohdezchimo](https://twitter.com/diegohdezchimo)
+- LinkedIn: [diegoshdezaguilar](https://www.linkedin.com/in/diegoshdezaguilar/)
 
-Contributions, issues and feature requests are welcome!
+### Carlos González
 
-Feel free to check the [issues page](issues/).
+- GitHub: [@chuckbuckethead](https://github.com/chuckbuckethead)
+- Twitter: [@aclerkofpomier](https://twitter.com/aclerkofpomier)
+- LinkedIn: [Carlos González](https://www.linkedin.com/in/carlosrmgonzalez/)
 
-## Show your support
+## Acknowledgements
 
-Give a ⭐️ if you like this project!
+- [Microverse](https://www.microverse.org)
 
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
+This project is [MIT](https://www.mit.edu/~amini/LICENSE.md) licensed.
